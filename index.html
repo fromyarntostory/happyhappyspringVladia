@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Spring, Vladia 🤍</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Special+Elite&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f5efe6;
+--ink:#1b1b1b;
+--muted:#6b6b6b;
+--card:#ffffffb5;
+--border:#00000018;
+--radius:22px;
+--shadow:0 18px 50px rgba(0,0,0,.10);
+}
+
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+color:var(--ink);
+background:radial-gradient(1200px 600px at 50% -10%, #ffffff 0%, var(--bg) 55%, #efe6da 100%);
+font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+line-height:1.6;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:24px;
+}
+
+.wrap{width:min(860px,100%);}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+padding:clamp(18px,3.2vw,34px);
+backdrop-filter:blur(8px);
+}
+
+.title{
+font-family:"Special Elite",monospace;
+font-size:clamp(20px,2.6vw,28px);
+margin-bottom:20px;
+}
+
+.player{
+margin-bottom:20px;
+}
+
+button{
+border:1px solid var(--border);
+background:#fff;
+padding:10px 16px;
+border-radius:999px;
+cursor:pointer;
+font-weight:600;
+}
+
+#audioStatus{
+font-size:13px;
+color:var(--muted);
+margin-top:8px;
+}
+
+.msg{
+font-size:clamp(15px,1.8vw,17px);
+white-space:pre-wrap;
+}
+
+.signature{
+margin-top:18px;
+padding-top:14px;
+border-top:1px dashed var(--border);
+}
+
+.hand{
+font-family:"Caveat",cursive;
+font-size:clamp(22px,3.2vw,30px);
+}
+
+#yt{
+position:absolute;
+width:1px;
+height:1px;
+overflow:hidden;
+left:-9999px;
+top:-9999px;
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="wrap">
+<section class="card">
+
+<div class="title">Pentru Vladia</div>
+
+<div class="player">
+<button id="soundBtn">▶ Pornește muzica</button>
+<div id="audioStatus">Apasă butonul și citește mesajul.</div>
+</div>
+
+<div class="msg">
+
+Draga mea Vladia,
+
+Ia-ti un moment in care esti numai tu cu tine. Porneste muzica. Si citeste incet, cu inima deschisa, ceea ce imi doresc sa iti transmit.
+
+Oamenii nu vin niciodata intamplator in viata noastra. Nimeni, in nicio circumstanta. Iar uneori, cele mai mari lectii le primim abia dupa ce reusim sa vedem dincolo de stratul subtire al emotiilor care ne invalui sufletul.
+
+Emotii bune, emotii grele… sunt ale noastre. Si ne arata, daca avem curaj sa le ascultam, cine suntem si ce avem de vindecat.
+
+Ne stim de mult. M-am oprit din numarat ani si am inceput sa numar momente. Si singurul lucru pe care il regret e ca, la un moment dat, momentele au devenit mai putine… din graba, din comoditate, din “nu am timp”.
+
+Si totusi, am inteles ceva important: mai mult nu e neaparat mai bine. Mai prezent e cel mai bine.
+
+Te-am privit in multe feluri si am vazut atatea versiuni ale tale: fata rebela, femeia care a iubit mult, sotia care a trecut prin incercari, mama care a dus greutati.
+
+Si apoi am vazut FEMEIA.
+
+Femeia care a inteles ca din toate starile grele poti iesi invingator atunci cand spui STOP si alegi sa incepi din nou.
+
+Esti putere si sensibilitate in acelasi timp.
+Esti apa si foc.
+Esti speciala.
+
+Ai inteles ca iubirea nu se castiga cu lupte si ego-uri.
+Iubirea se ofera.
+Curat.
+Simplu.
+
+Esti un munte de intelepciune.
+Pana la varsta asta ai invatat lectii pe care unii nu le invata nici intr-o viata.
+
+Am privit evolutia ta ca femeie, mama, om, sotie, sora, fiica… si nu pot decat sa fiu recunoscatoare ca am vazut rezultatul: un om frumos.
+
+Si Vladia… despre fizicul tau, my dear: o adolescenta, cum ar zice Rares.
+Un par superb si o eleganta rara.
+
+Sa nu uiti niciodata asta.
+
+Jumatate din viata ai invatat.
+Acum e timpul sa traiesti.
+
+Esti un exemplu pentru mine.
+Si ma bucur mult ca te am in viata mea.
+
+</div>
+
+<div class="signature">
+<div class="hand">Cu drag, cu timp, cu suflet, Miha</div>
+</div>
+
+<div id="yt"></div>
+
+</section>
+</main>
+
+<script>
+
+(function(){
+var tag=document.createElement('script');
+tag.src="https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+})();
+
+var player;
+var VIDEO_ID="HpphFd_mzXE";
+
+window.onYouTubeIframeAPIReady=function(){
+player=new YT.Player('yt',{
+videoId:VIDEO_ID,
+playerVars:{
+autoplay:0,
+controls:0,
+rel:0,
+playsinline:1
+}
+});
+};
+
+document.getElementById("soundBtn").onclick=function(){
+if(player){
+player.unMute();
+player.setVolume(80);
+player.playVideo();
+document.getElementById("audioStatus").innerText="Muzica a pornit 🎵";
+}
+};
+
+</script>
+
+</body>
+</html>
